@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AWS GenAI Pro — offline course</title>
+<meta name="theme-color" content="#232f3e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AWS GenAI">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="icon" href="assets/icons/icon-192.png">
 <link rel="stylesheet" href="assets/app.css">
 </head>
 <body>
@@ -28,5 +35,13 @@
 <script src="content/m15.js"></script>
 <script src="content/exam.js"></script>
 <script>COURSE.start();</script>
+<script>
+/* Register the offline service worker (http/https only — not file://). */
+if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function () {});
+  });
+}
+</script>
 </body>
 </html>
